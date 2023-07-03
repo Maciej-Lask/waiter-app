@@ -14,12 +14,6 @@ const NavBar = () => {
           <Nav.Link as={NavLink} to="/"  activeclassname="active">
             Home
           </Nav.Link>
-          <Nav.Link as={NavLink} to="/categories" activeclassname="active">
-            Categories
-          </Nav.Link>
-          <Nav.Link as={NavLink} to="/about" activeclassname="active">
-            About
-          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>
