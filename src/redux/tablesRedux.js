@@ -1,3 +1,4 @@
+import { API_URL } from '../config';
 //variables
 const EDIT_TABLE = 'app/tables/EDIT_TABLE';
 const UPDATE_TABLES = 'app/tables/UPDATE_TABLES';
@@ -5,30 +6,28 @@ const UPDATE_TABLES = 'app/tables/UPDATE_TABLES';
 export const getTables = (state) => state.tables;
 export const getTableById = (state, id) => {
   return state.tables.find((table) => table.id === id);
-}
-
+};
 
 // action creators
 
 export const editTable = (payload) => ({
   type: EDIT_TABLE,
-  payload
-})
+  payload,
+});
 export const updateTables = (payload) => ({
   type: UPDATE_TABLES,
-  payload
-})
+  payload,
+});
 
-
-  export const fetchTables = () => {
-    return dispatch => {
-      fetch('http://localhost:3131/api/tables')
-        .then((res) => res.json())
-        .then((tables) => {
-          dispatch(updateTables(tables));
-        });
-    };
+export const fetchTables = () => {
+  return (dispatch) => {
+    fetch(API_URL + '/tables')
+      .then((res) => res.json())
+      .then((tables) => {
+        dispatch(updateTables(tables));
+      });
   };
+};
 
 export const editTableRequest = ({
   id,
@@ -52,8 +51,9 @@ export const editTableRequest = ({
       }),
     };
 
-    fetch(`http://localhost:3131/api/tables/${id}`, options)
-      .then(() => dispatch(editTable({ id, status, bill, peopleCurrent, peopleMax })))
+    fetch(API_URL + `/tables/${id}`, options).then(() =>
+      dispatch(editTable({ id, status, bill, peopleCurrent, peopleMax }))
+    );
   };
 };
 
