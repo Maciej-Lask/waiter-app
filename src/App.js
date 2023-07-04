@@ -22,7 +22,7 @@ const App = () => {
           <Route exact path="/" element={<Home />} />
           <Route path="/table/:id" element={<Table />} />
           <Route path="*" element={<PageNotFound />} />
-        </Routes>
+        </Routes> 
         <Footer />
       </Container>
     </main>

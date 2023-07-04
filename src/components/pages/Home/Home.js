@@ -1,9 +1,20 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getTables } from '../../../redux/tablesRedux';
 import { useSelector } from 'react-redux';
 
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const tables = useSelector(getTables);
+
+  useEffect(() => {
+ 
+      setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
