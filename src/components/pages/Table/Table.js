@@ -28,9 +28,7 @@ const Table = () => {
     }
   }, [table]);
 
-  const tableIsValid = tables.some(
-    (table) => table.id === id
-  );
+  const tableIsValid = tables.some((table) => table.id === id);
   console.log(tableIsValid);
   const [status, setStatus] = useState(table?.status || 'Free');
   const [bill, setBill] = useState(table?.bill || 0);
@@ -90,6 +88,11 @@ const Table = () => {
     }
     if (newStatus !== 'Busy') {
       setBill(0);
+    }
+    if (newStatus === table.status) {
+      setPeopleCurrent(table.peopleCurrent);
+      setBill(table.bill);
+      setPeopleMax(table.peopleMax);
     }
   };
 
