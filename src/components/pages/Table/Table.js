@@ -27,13 +27,14 @@ const Table = () => {
       setPeopleMax(table.peopleMax);
     }
   }, [table]);
-
   const tableIsValid = tables.some((table) => table.id === id);
-  console.log(tableIsValid);
+  // console.log(tableIsValid);
+
   const [status, setStatus] = useState(table?.status || 'Free');
   const [bill, setBill] = useState(table?.bill || 0);
   const [peopleCurrent, setPeopleCurrent] = useState(table?.peopleCurrent || 0);
   const [peopleMax, setPeopleMax] = useState(table?.peopleMax || 10);
+  
   if (!table || !tableIsValid) {
     navigate('/');
     return <div>Loading...</div>;
@@ -44,7 +45,6 @@ const Table = () => {
     const updatedValues = { id, status, bill, peopleCurrent, peopleMax };
 
     dispatch(editTableRequest(updatedValues));
-    // dispatch(editTable(updatedValues));
 
     navigate('/');
   };
